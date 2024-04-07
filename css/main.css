@@ -1,0 +1,98 @@
+@font-face{
+  font-family: 'Absans';
+  src: url('absans.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'Messapia';
+  src: url('Messapia-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'Messapia';
+  src: url('Messapia-Regular.woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/*ROOT*/
+:root {
+  --url: url('/wp-content/themes/twentytwentyone/assets/arrow_2.svg');
+  --fontsizeS: 14px;
+  --fontsizeM: 22px;
+  --fontsizeL: 36px;
+  --margin: 10px;
+  --margin2: calc(--margin * 2);
+  --black: #282828;
+  --color: rgb(0, 255, 160);
+  --darkerColor: #000000;
+  --white: #ffffff;
+  --color_violet: rgb(80, 40, 60);
+}
+
+*{
+  font-family: Messapia; /*Suisse*/
+  line-height: 120%;
+  letter-spacing: 0.02em!important;
+  box-sizing: border-box;
+
+
+  color: var(--color_violet);
+  line-height: 124%;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  /*hide scrollbar*/
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  font-size: var(--fontsizeM);
+}
+
+*::selection{
+  color: var(--white);
+  background: var(--color_coral);
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+* {  
+  -user-select: none;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+body {
+  margin: var(--margin);
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+header {
+  width: 100%;
+  font-size: var(--fontsizeL);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header span {
+  font-size: var(--fontsizeL);
+  vertical-align: middle;
+}
+header span.aboutButton {
+  font-size: 1.6em;
+  line-height: 0%;
+  vertical-align: middle;
+}
