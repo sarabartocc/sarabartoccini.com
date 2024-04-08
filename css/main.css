@@ -24,7 +24,7 @@
   --fontsizeM: 22px;
   --fontsizeL: 36px;
   --margin: 10px;
-  --margin2: calc(--margin * 2);
+  --margin2: 20px;
   --black: #282828;
   --color: rgb(0, 255, 160);
   --darkerColor: #000000;
@@ -74,25 +74,207 @@
 
 body {
   margin: var(--margin);
+  margin-top: 0;
+  margin-bottom: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
 }
 
 header {
-  width: 100%;
+  width: calc(100vw - var(--margin2));
+  height: 1.6em;
   font-size: var(--fontsizeL);
-  position: relative;
-  display: flex;
+  
+  /*display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;*/
+  padding-bottom: 6px;
+  transition: height .6s ease-in-out;
+
+  position: absolute;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255,255,255,.8);
+  overflow: hidden;
 }
 header span {
+  position: absolute;
+  top: 8px;
+  left: 0;
   font-size: var(--fontsizeL);
   vertical-align: middle;
 }
+header span.name {
+  opacity: 1;
+  transition: opacity .6s ease-in-out;
+}
+header span.name.invisible {
+  opacity: 0;
+}
 header span.aboutButton {
+  position: absolute;
+  top: 0;
+  left: unset;
+  right: 0;
   font-size: 1.6em;
-  line-height: 0%;
+  line-height: 1em;
   vertical-align: middle;
+  cursor: pointer;
+  transition: .6s ease-in-out;
+  transform-origin: 50% 55%;
+}
+header span.aboutButton.rotated {
+  transform: rotate(45deg);
+}
+header.opened {
+  height: 100vh;
+}
+
+header .big {
+  opacity: 0;
+  transition: opacity .6s ease-in-out;
+  margin-top: 6em;
+  position: relative;
+  height: calc(100vh - 6em);
+}
+header .big.visible {
+  opacity: 1;
+}
+header .big span {
+  position: relative;
+  display: block;
+}
+header .big img {
+  position: absolute;
+  bottom: var(--margin);
+  height: 80vh;
+  right: 0;
+}
+header .big .bigHello,
+header .big .bigMail,
+header .big .bigIG {
+  font-family: 'Absans';
+}
+header .big .bigName {
+  font-size: 5.4vw;
+}
+
+header .big .contacts {
+  height: auto;
+  display: block;
+  bottom: 30px;
+  position: absolute;
+}
+
+header .big .bigHello,
+header .big .bigContacts {
+  font-size: 3vw;
+}
+header .big .bigMail,
+header .big .bigMail *,
+header .big .bigIG,
+header .big .bigIG * {
+  font-family: 'Absans';
+  font-size: 1.6vw;
+  line-height: 120%;
+  height: 120%;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  gap: 10px;
+}
+main #leftColumn,
+main #rightColumn {
+  padding-top: 2em;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 10px;
+
+  overflow: scroll;
+}
+main .column {
+  flex-grow: 1;
+  width: 50%;
+  max-width: calc(50% - 5px); 
+
+  height: auto;
+}
+main img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+main img + img:not(.fullwidth) {
+  margin-top: 10px;
+}
+main img.fullwidth {
+  width: 100%;
+}
+
+.full-width-image-container {
+  flex-basis: 100%;
+}
+
+img.rotatingImg {
+  animation: rotation 6s linear infinite;
+  mix-blend-mode: multiply;
+}
+@keyframes rotation {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(360deg)}
+}
+
+
+/*MEDIA QUERY*/
+@media screen and (max-width: 768px) {
+  main{
+    flex-direction: column;
+    overflow: scroll;
+    height: 100vh;
+    display: block;
+  }
+  main #leftColumn, main #rightColumn {
+    height: auto;
+    overflow: hidden;
+  }
+  main #rightColumn {
+    padding-top: 0;
+  }
+
+  header .big .bigName {
+    font-size: 12vw;
+    line-height: 100%;
+    margin-left: 10px;
+  }
+  header .big .bigHello {
+    font-size: 4vw;
+    margin-top: 2em;
+    margin-left: 10px;
+  }
+  header .big .contacts {
+    position: relative;
+    margin-top: 60px;
+    margin-left: 10px;
+  }
+  header .big .contacts .bigContacts{
+    font-size: 6vw;
+  }
+  header .big .contacts .bigMail,
+  header .big .contacts .bigMail *,
+  header .big .contacts .bigIG,
+  header .big .contacts .bigIG * {
+    font-size: 4vw;
+  }
+  header .big img {
+    height: 50vh;
+    bottom: 20px;
+  }
 }
