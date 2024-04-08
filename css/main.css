@@ -235,6 +235,12 @@ img.rotatingImg {
 
 /*MEDIA QUERY*/
 @media screen and (max-width: 768px) {
+  :root {
+    --fontsizeL: 24px;
+  }
+  header span.aboutButton {
+    font-size: 1.8em;
+  }
   main{
     flex-direction: column;
     overflow: scroll;
